@@ -42,9 +42,6 @@ func StartStatsFetcher() {
 
 				if err != nil {
 					GetLogger().Error(err)
-
-					defer resp.Body.Close()
-
 					dbInstance.db.Model(&server).Update("ServerStatus", "offline")
 				} else {
 					defer resp.Body.Close()
